@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { useState } from 'react'
+import Ecom from './components/ecom'
+import Panier from './components/panier'
+import {BrowserRouter,Route, Routes} from "react-router-dom"
+import "./App.css"
+const App = () => {
+  const [store,setStore] = useState([])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Ecom store={store} setStore={setStore}/>}/>
+      <Route path='/panier' element={<Panier  store={store} setStore={setStore}/>}/>
+    </Routes>
+    </BrowserRouter>
+     
+  )
 }
 
-export default App;
+export default App
